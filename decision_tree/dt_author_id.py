@@ -9,7 +9,7 @@
     Chris has label 1
 
 """
-    
+from os import system
 import sys
 from time import time
 sys.path.append("../tools/")
@@ -26,8 +26,21 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import tree
+
+
+
+
+# Load data
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
+clf.fit(features_train, labels_train)
+tree.export_graphviz(clf, out_file='tree.dot')  
+
+print clf.score(features_test, labels_test)
+
 
 
 #########################################################
-
 
